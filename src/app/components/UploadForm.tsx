@@ -1,11 +1,13 @@
 "use client";
 import { useState } from "react";
 import Analytics from "./Analytics";
+import { Progress } from "@nextui-org/react";
 
 const UploadForm = () => {
   const [file, setFile] = useState<File | null>(null);
   const [message, setMessage] = useState<string>("");
   const [analysisResults, setAnalysisResults] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -15,6 +17,7 @@ const UploadForm = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
     if (!file) {
       setMessage("No file selected");
       return;
@@ -42,15 +45,9 @@ const UploadForm = () => {
       }
     } catch (error) {
       setMessage("An error occurred");
+    } finally {
+      setIsLoading(false);
     }
-  };
-
-  const getSentimentEmoji = (score: number) => {
-    if (score > 0.75) return "😃";
-    if (score > 0.25) return "🙂";
-    if (score > -0.25) return "😐";
-    if (score > -0.75) return "😟";
-    return "😠";
   };
 
   return (
@@ -67,6 +64,15 @@ const UploadForm = () => {
         </button>
         {message && <p>{message}</p>}
       </form>
+      {isLoading && (
+        <Progress
+          size="sm"
+          isIndeterminate
+          label="Uploading & Analyzing..."
+          className="max-w-md mt-4"
+          color="default"
+        />
+      )}
       {analysisResults && (
         <div className="w-full">
           <Analytics analysisResults={analysisResults} />

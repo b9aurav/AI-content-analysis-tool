@@ -1,3 +1,4 @@
+import { Chip } from "@nextui-org/react";
 import React from "react";
 
 type Props = {
@@ -34,16 +35,20 @@ const TopicIdentifier = (props: Props) => {
   console.log(categorizedTopics);
 
   return (
-    <div className="card p-4 my-2">
+    <div className="p-2 my-2">
       <text className="text-lg font-bold">Identified Topics</text>
       {Object.keys(categorizedTopics).length > 0 ? (
         Object.keys(categorizedTopics).map((type) => (
           <div key={type}>
             <text className="text-sm font-bold">{type}</text>
             <div className="flex flex-wrap my-2">
-              {categorizedTopics[type].map((topic: any, index: number) => (
-                <span key={index} className="badge variant-filled-surface m-1">
-                  {topic.link ? (
+              {categorizedTopics[type].map((topic: any, index: number) =>
+                topic.link ? (
+                  <Chip
+                    key={index}
+                    className="m-1"
+                    variant="dot"
+                  >
                     <a
                       href={topic.link}
                       target="_blank"
@@ -51,11 +56,13 @@ const TopicIdentifier = (props: Props) => {
                     >
                       <u>{topic.name}</u>
                     </a>
-                  ) : (
-                    topic.name
-                  )}
-                </span>
-              ))}
+                  </Chip>
+                ) : (
+                  <Chip key={index} className="m-1">
+                    {topic.name}
+                  </Chip>
+                )
+              )}
             </div>
           </div>
         ))

@@ -1,17 +1,19 @@
 import type { Config } from "tailwindcss";
-import { skeleton } from '@skeletonlabs/tw-plugin';
+import { skeleton } from "@skeletonlabs/tw-plugin";
 import { join } from "path";
+import { nextui } from "@nextui-org/react";
 
 const config: Config = {
-  darkMode: 'class',
+  darkMode: "class",
   content: [
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    join(require.resolve(
-			'@skeletonlabs/skeleton'),
-			'../**/*.{html,js,svelte,ts}'
-		)
+    join(
+      require.resolve("@skeletonlabs/skeleton"),
+      "../**/*.{html,js,svelte,ts}"
+    ),
   ],
   theme: {
     extend: {
@@ -24,8 +26,9 @@ const config: Config = {
   },
   plugins: [
     skeleton({
-      themes: { preset: [ "skeleton" ] }
-    })
+      themes: { preset: ["skeleton"] },
+    }),
+    nextui(),
   ],
 };
 export default config;
