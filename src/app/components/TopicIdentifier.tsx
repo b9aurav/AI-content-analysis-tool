@@ -7,7 +7,6 @@ type Props = {
 
 const extractTopics = (topicResults: any) => {
   const topics: { name: string; type: string; link?: string }[] = [];
-  console.log(topicResults);
   if (topicResults.entities) {
     topicResults.entities.forEach((entity: any) => {
       topics.push({
@@ -31,8 +30,6 @@ const TopicIdentifier = (props: Props) => {
     acc[topic.type].push(topic);
     return acc;
   }, {});
-
-  console.log(categorizedTopics);
 
   return (
     <div className="p-2 my-2">

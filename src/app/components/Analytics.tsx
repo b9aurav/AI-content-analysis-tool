@@ -3,6 +3,7 @@ import SentimentAnalytics from "./SentimentAnalytics";
 import TopicIdentifier from "./TopicIdentifier";
 import TextSummary from "./TextSummary";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import KeywordInsights from "./KeywordInsights";
 
 interface AnalyticsProps {
   analysisResults: any;
@@ -34,6 +35,13 @@ const Analytics = ({ analysisResults }: AnalyticsProps) => {
               <Card>
                 <CardBody>
                   <TopicIdentifier topicResults={analysisResults.entities[0]} />
+                </CardBody>
+              </Card>
+            </Tab>
+            <Tab key="Keywords" title="Keywords">
+              <Card>
+                <CardBody>
+                  <KeywordInsights tokenResults={analysisResults.summaryResult[0].tokens} />
                 </CardBody>
               </Card>
             </Tab>

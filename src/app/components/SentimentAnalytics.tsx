@@ -42,7 +42,7 @@ const SentimentAnalytics = (props: Props) => {
           </p>
           <Popover placement="right">
             <PopoverTrigger>
-              <Button size="sm" className="mx-2" isIconOnly>
+              <Button size="sm" radius="full" className="mx-2" isIconOnly>
                 <strong>?</strong>
               </Button>
             </PopoverTrigger>
@@ -69,7 +69,7 @@ const SentimentAnalytics = (props: Props) => {
           </p>
           <Popover placement="right">
             <PopoverTrigger>
-              <Button size="sm" className="mx-2" isIconOnly>
+              <Button size="sm" radius="full" className="mx-2" isIconOnly>
                 <strong>?</strong>
               </Button>
             </PopoverTrigger>

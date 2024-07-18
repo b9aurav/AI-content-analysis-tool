@@ -36,7 +36,6 @@ const UploadForm = () => {
       );
 
       const result = await response.json();
-      console.log(result);
       if (result.success) {
         setAnalysisResults(result.data);
         setMessage("");
