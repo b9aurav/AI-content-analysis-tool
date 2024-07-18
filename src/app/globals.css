@@ -6,9 +6,12 @@
     position: relative;
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   canvas {
-    width: 100% !important;
-    height: 100% !important;
+    width: 70% !important;
+    height: 70% !important;
   }

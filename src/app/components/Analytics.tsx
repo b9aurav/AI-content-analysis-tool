@@ -19,7 +19,7 @@ const Analytics = ({ analysisResults }: AnalyticsProps) => {
               <Card>
                 <CardBody>
                   <SentimentAnalytics
-                    sentimentResult={analysisResults.sentimentResult}
+                    sentimentResult={analysisResults.sentimentResult[0]}
                   />
                 </CardBody>
               </Card>
@@ -27,7 +27,7 @@ const Analytics = ({ analysisResults }: AnalyticsProps) => {
             <Tab key="Summary" title="Summary">
               <Card>
                 <CardBody>
-                  <TextSummary summaryData={analysisResults.summaryResult[0]} />
+                  <TextSummary originalData={analysisResults.summaryResult[0]} summaryData={analysisResults.summary[0].summary_text} />
                 </CardBody>
               </Card>
             </Tab>

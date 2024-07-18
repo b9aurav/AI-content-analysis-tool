@@ -56,7 +56,7 @@ const UploadForm = () => {
           className="input w-60"
           onChange={handleFileChange}
           type="file"
-          accept=".txt,.html,.doc"
+          accept=".txt,.html,.doc,.docx"
         />
         <button type="submit" className="btn variant-filled mx-2">
           Analyze

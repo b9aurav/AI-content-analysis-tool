@@ -99,7 +99,7 @@ const KeywordInsights = (props: Props) => {
   };
 
   const options = {
-    maintainAspectRatio: false,
+    // maintainAspectRatio: false,
   };
 
   return (
