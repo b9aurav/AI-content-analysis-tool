@@ -1,12 +1,26 @@
-import Image from "next/image";
-import UploadForm from "./components/UploadForm";
+"use client";
+import { Spinner } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter();
+
+  const checkToken = async () => {
+    if (typeof window !== "undefined" && localStorage.getItem("token")) {
+      router.push("/dashboard");
+    } else {
+      router.push("/login");
+    }
+  };
+
+  useEffect(() => {
+    checkToken();
+  });
+
   return (
-    <main>
-      <div className="pt-12 flex justify-center items-center">
-        <UploadForm />
-      </div>
-    </main>
+    <div className="flex justify-center items-center w-screen h-screen">
+      <Spinner color="danger" size="lg" />
+    </div>
   );
 }
