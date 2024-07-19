@@ -10,6 +10,7 @@ const Dashboard = () => {
   const [analysisResults, setAnalysisResults] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [isFileAnalyzed, setIsFileAnalyzed] = useState(false);
 
   const checkToken = async () => {
     if (typeof window !== "undefined" && localStorage.getItem("token")) {
@@ -59,6 +60,7 @@ const Dashboard = () => {
     } catch (error) {
       setMessage("An error occurred");
     } finally {
+      setIsFileAnalyzed(true);
       setIsLoading(false);
     }
   };
@@ -77,11 +79,28 @@ const Dashboard = () => {
             onChange={handleFileChange}
             type="file"
             accept=".txt,.html,.doc,.docx"
+            disabled={isFileAnalyzed || isLoading}
           />
-          <button type="submit" className="btn variant-filled mx-2">
-            Analyze
+          {!isFileAnalyzed ? (
+            <button
+              type="submit"
+              className="btn variant-filled mx-2"
+              disabled={isLoading}
+            >
+              Analyze
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              className="btn variant-filled mx-2"
+            >
+              Upload another
+            </button>
+          )}
+          <button className="btn variant-filled" onClick={() => logout()}>
+            Logout
           </button>
-          <button className="btn variant-filled" onClick={() => logout()}>Logout</button>
           {message && <p>{message}</p>}
         </form>
         {isLoading && (

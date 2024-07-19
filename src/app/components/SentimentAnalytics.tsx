@@ -20,7 +20,7 @@ import {
   Legend,
 } from "chart.js";
 import React from "react";
-import { Line } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 
 type Props = {
   sentimentResult: any;
@@ -153,7 +153,7 @@ const SentimentAnalytics = (props: Props) => {
         </div>
       </div>
       <div className="chart-container flex justify-center items-center w-full h-full">
-        <Line data={chartData} options={chartOptions} className="mt-4" />
+        <Bar data={chartData} options={chartOptions} className="mt-4" />
       </div>
       <div className="flex justify-center items-center">
         <text>Hover over points to check sentences.</text>
