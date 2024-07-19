@@ -34,6 +34,7 @@ const Login = (props: Props) => {
       const result = await response.json();
       if (result.success) {
         localStorage.setItem("token", result.token);
+        localStorage.setItem("userId", result.userId);
         router.push("/dashboard");
       } else {
         alert("Error: Invalid email or password");

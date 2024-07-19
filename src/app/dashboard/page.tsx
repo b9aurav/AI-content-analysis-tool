@@ -65,9 +65,28 @@ const Dashboard = () => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    router.push("/login");
+  const handleLogoutClick = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/logout`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId: localStorage.getItem("userId") }),
+        }
+      );
+
+      const result = await response.json();
+      if (result.success) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log("An error occurred", error);
+    }
   };
 
   return (
@@ -98,7 +117,7 @@ const Dashboard = () => {
               Upload another
             </button>
           )}
-          <button className="btn variant-filled" onClick={() => logout()}>
+          <button className="btn variant-filled" onClick={handleLogoutClick}>
             Logout
           </button>
           {message && <p>{message}</p>}
