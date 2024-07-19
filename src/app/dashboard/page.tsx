@@ -117,7 +117,7 @@ const Dashboard = () => {
               Upload another
             </button>
           )}
-          <button className="btn variant-filled" onClick={handleLogoutClick}>
+          <button className="btn variant-filled" type="button" onClick={handleLogoutClick}>
             Logout
           </button>
           {message && <p>{message}</p>}
