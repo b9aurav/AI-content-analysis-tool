@@ -1,5 +1,9 @@
 # AI-Powered content summarization and Analysis Tool
 
+
+https://github.com/user-attachments/assets/3b5f5a50-59bb-4259-adb2-b0d7e12ed2ee
+
+
 ## Run it Locally
 
 1. **Clone the repository:**
